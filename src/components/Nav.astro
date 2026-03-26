@@ -1,0 +1,188 @@
+---
+import LanguageSelector from './LanguageSelector.astro';
+import ThemeSelector from './ThemeSelector.astro';
+import type { Lang } from '@/i18n/utils';
+import { useTranslations } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const base = lang === 'es' ? '/es' : '';
+---
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href={`${base}/`} class="nav-logo">
+      <span class="logo-bracket">{'{}'}</span>
+      <span class="logo-name">xavi.dev</span>
+    </a>
+
+    <div class="nav-links">
+      <a href={`${base}/`} class="nav-link">{t.nav.home}</a>
+      <a href={`${base}/blog`} class="nav-link">{t.nav.blog}</a>
+      <a href={`${base}/projects`} class="nav-link">{t.nav.projects}</a>
+    </div>
+
+    <div class="nav-controls">
+      <LanguageSelector
+        currentLang={lang}
+        label={t.language.toggle}
+        langNames={{ en: t.language.en, es: t.language.es }}
+      />
+      <ThemeSelector
+        label={t.theme.toggle}
+        themes={{ light: t.theme.light, dark: t.theme.dark, blue: t.theme.blue, green: t.theme.green }}
+      />
+    </div>
+
+    <button class="nav-hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav-mobile-menu">
+    <a href={`${base}/`} class="nav-mobile-link">{t.nav.home}</a>
+    <a href={`${base}/blog`} class="nav-mobile-link">{t.nav.blog}</a>
+    <a href={`${base}/projects`} class="nav-mobile-link">{t.nav.projects}</a>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: var(--bg);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .logo-bracket {
+    color: var(--accent);
+    font-family: monospace;
+  }
+
+  .logo-name {
+    color: var(--fg);
+  }
+
+  .nav-links {
+    display: none;
+    gap: 0.25rem;
+    flex: 1;
+  }
+
+  .nav-link {
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--fg);
+    background-color: var(--bg-card-hover);
+  }
+
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+
+  .nav-hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem;
+    border-radius: 0.4rem;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--fg);
+    border-radius: 1px;
+    transition: all 0.2s ease;
+  }
+
+  .nav-mobile-menu {
+    display: none;
+    flex-direction: column;
+    padding: 0.75rem 1.5rem 1rem;
+    gap: 0.25rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-mobile-link {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    color: var(--fg-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.15s ease;
+  }
+
+  .nav-mobile-link:hover {
+    color: var(--fg);
+    background-color: var(--bg-card-hover);
+  }
+
+  .nav-mobile-menu.open {
+    display: flex;
+  }
+
+  @media (min-width: 641px) {
+    .nav-links {
+      display: flex;
+    }
+
+    .nav-hamburger {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function initNav() {
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileMenu = document.querySelector('.nav-mobile-menu');
+    hamburger?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('open');
+    });
+  }
+
+  initNav();
+  document.addEventListener('astro:page-load', initNav);
+</script>

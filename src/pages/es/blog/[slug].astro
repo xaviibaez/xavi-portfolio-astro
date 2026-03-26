@@ -1,0 +1,153 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { useTranslations } from '@/i18n/utils';
+import { getCollection, render } from 'astro:content';
+import { format } from 'date-fns';
+import { es as esLocale } from 'date-fns/locale';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts
+    .filter((p) => p.id.startsWith('es/'))
+    .map((post) => ({
+      params: { slug: post.id.split('/').pop() },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const lang = 'es';
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  lang={lang}
+  title={`${post.data.title} — Xavi Ibáñez`}
+  description={post.data.description}
+>
+  <article class="post-page">
+    <div class="post-nav">
+      <a href="/es/blog" class="btn-ghost back-link">
+        ← {t.blog.backToBlog}
+      </a>
+    </div>
+
+    <header class="post-header">
+      <div class="post-meta">
+        <time class="text-muted" datetime={post.data.pubDate.toISOString()}>
+          {t.blog.publishedOn} {format(post.data.pubDate, "d 'de' MMMM 'de' yyyy", { locale: esLocale })}
+        </time>
+        <div class="post-tags">
+          {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+        </div>
+      </div>
+      <h1 class="post-title">{post.data.title}</h1>
+      <p class="post-desc text-muted">{post.data.description}</p>
+    </header>
+
+    <div class="post-content prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post-page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .post-nav { margin-bottom: 2rem; }
+  .back-link { font-size: 0.85rem; }
+
+  .post-header {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .post-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+  .post-title {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    color: var(--fg);
+  }
+
+  .post-desc { font-size: 1.05rem; line-height: 1.6; }
+
+  .prose { color: var(--fg); font-size: 1rem; line-height: 1.8; }
+
+  .prose :global(h1),
+  .prose :global(h2),
+  .prose :global(h3) {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--fg);
+  }
+
+  .prose :global(h1) { font-size: 1.75rem; }
+  .prose :global(h2) { font-size: 1.35rem; }
+  .prose :global(h3) { font-size: 1.1rem; }
+  .prose :global(p) { margin-bottom: 1.25rem; }
+
+  .prose :global(code) {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 0.3rem;
+    padding: 0.15rem 0.4rem;
+    font-size: 0.875em;
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+  }
+
+  .prose :global(pre) {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .prose :global(pre code) {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.875rem;
+    color: var(--fg);
+  }
+
+  .prose :global(a) {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+  .prose :global(li) { margin-bottom: 0.4rem; }
+
+  .prose :global(blockquote) {
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    color: var(--fg-muted);
+    font-style: italic;
+    margin: 1.5rem 0;
+  }
+</style>

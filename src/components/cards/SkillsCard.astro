@@ -1,0 +1,65 @@
+---
+import type { Translations } from '@/i18n/en';
+
+interface Props {
+  t: Translations;
+}
+
+const { t } = Astro.props;
+
+const skills = [
+  { name: 'Java', level: 5 },
+  { name: 'Spring Boot', level: 5 },
+  { name: 'TypeScript', level: 4 },
+  { name: 'Node.js', level: 4 },
+  { name: 'C#', level: 4 },
+  { name: '.NET', level: 3 },
+  { name: 'Angular', level: 3 },
+  { name: 'React', level: 3 },
+  { name: 'Vue.js', level: 3 },
+  { name: 'Docker', level: 4 },
+  { name: 'Kubernetes', level: 3 },
+  { name: 'AWS', level: 3 },
+  { name: 'Redis', level: 4 },
+  { name: 'PostgreSQL', level: 4 },
+  { name: 'Oracle', level: 3 },
+  { name: 'Elasticsearch', level: 3 },
+];
+---
+
+<div class="bento-card skills-card">
+  <p class="card-label text-muted">{t.skills.title}</p>
+  <div class="skills-grid">
+    {skills.map((skill) => (
+      <span class="tag">{skill.name}</span>
+    ))}
+  </div>
+</div>
+
+<style>
+  @media (min-width: 900px) {
+    .skills-card {
+      grid-column: span 2;
+    }
+  }
+
+  .skills-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+</style>

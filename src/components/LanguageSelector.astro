@@ -1,0 +1,112 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import type { Lang } from '@/i18n/utils';
+
+interface Props {
+  currentLang: Lang;
+  label: string;
+  langNames: { en: string; es: string };
+}
+
+const { currentLang, label, langNames } = Astro.props;
+const otherLang: Lang = currentLang === 'en' ? 'es' : 'en';
+
+// Get the current path without the lang prefix for the other lang URL
+const currentPath = Astro.url.pathname;
+let targetPath = '/';
+if (currentLang === 'en') {
+  // Going to ES: prefix with /es
+  targetPath = currentPath === '/' ? '/es' : `/es${currentPath}`;
+} else {
+  // Going to EN (default): strip /es prefix
+  targetPath = currentPath.replace(/^\/es/, '') || '/';
+}
+---
+
+<div class="lang-selector">
+  <button class="btn-ghost lang-toggle" aria-label={label}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+    </svg>
+    <span class="lang-current">{currentLang.toUpperCase()}</span>
+  </button>
+  <div class="lang-dropdown">
+    <a href="/" class={`lang-option ${currentLang === 'en' ? 'active' : ''}`}>
+      {langNames.en}
+    </a>
+    <a href="/es" class={`lang-option ${currentLang === 'es' ? 'active' : ''}`}>
+      {langNames.es}
+    </a>
+  </div>
+</div>
+
+<style>
+  .lang-selector {
+    position: relative;
+  }
+
+  .lang-toggle {
+    gap: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .lang-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 0.4rem;
+    min-width: 120px;
+    box-shadow: 0 8px 24px var(--shadow);
+    z-index: 100;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .lang-selector.open .lang-dropdown {
+    display: flex;
+  }
+
+  .lang-option {
+    display: block;
+    padding: 0.45rem 0.65rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--fg);
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+
+  .lang-option:hover,
+  .lang-option.active {
+    background-color: var(--bg-card-hover);
+  }
+
+  .lang-option.active {
+    color: var(--accent);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  function initLangSelector() {
+    const selector = document.querySelector('.lang-selector');
+    const toggle = document.querySelector('.lang-toggle');
+
+    toggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      selector?.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => {
+      selector?.classList.remove('open');
+    });
+  }
+
+  initLangSelector();
+  document.addEventListener('astro:page-load', initLangSelector);
+</script>

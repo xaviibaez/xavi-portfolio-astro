@@ -1,0 +1,14 @@
+---
+// Redirect to the default locale (en) home page.
+// Astro i18n with prefixDefaultLocale: false means / is English.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BentoGrid from '@/components/BentoGrid.astro';
+import { useTranslations } from '@/i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title="Xavi Ibáñez — Senior Backend Engineer">
+  <BentoGrid t={t} lang={lang} />
+</BaseLayout>

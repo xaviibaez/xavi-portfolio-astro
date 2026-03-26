@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+/* ─── Color Themes ─────────────────────────────────────────────────────────── */
+
+:root,
+[data-theme="light"] {
+  --bg: #f8f8f8;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f0f0;
+  --fg: #0a0a0a;
+  --fg-muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --accent-fg: #ffffff;
+  --accent-muted: #eef2ff;
+  --shadow: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+  --bg: #0f0f0f;
+  --bg-card: #1a1a1a;
+  --bg-card-hover: #222222;
+  --fg: #fafafa;
+  --fg-muted: #9ca3af;
+  --border: #2d2d2d;
+  --accent: #818cf8;
+  --accent-hover: #a5b4fc;
+  --accent-fg: #0f0f0f;
+  --accent-muted: #1e1b4b;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="blue"] {
+  --bg: #e8f0fe;
+  --bg-card: #ffffff;
+  --bg-card-hover: #dbeafe;
+  --fg: #1e3a5f;
+  --fg-muted: #4a6fa5;
+  --border: #bfdbfe;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-fg: #ffffff;
+  --accent-muted: #dbeafe;
+  --shadow: rgba(37, 99, 235, 0.1);
+}
+
+[data-theme="green"] {
+  --bg: #ecfdf5;
+  --bg-card: #ffffff;
+  --bg-card-hover: #d1fae5;
+  --fg: #14532d;
+  --fg-muted: #4b7c5e;
+  --border: #a7f3d0;
+  --accent: #059669;
+  --accent-hover: #047857;
+  --accent-fg: #ffffff;
+  --accent-muted: #d1fae5;
+  --shadow: rgba(5, 150, 105, 0.1);
+}
+
+/* ─── Base Styles ───────────────────────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ─── Bento Card ────────────────────────────────────────────────────────────── */
+
+.bento-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px var(--shadow);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.bento-card:hover {
+  box-shadow: 0 4px 16px var(--shadow);
+  transform: translateY(-1px);
+}
+
+/* ─── Utility ───────────────────────────────────────────────────────────────── */
+
+.text-muted {
+  color: var(--fg-muted);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: var(--accent-muted);
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: var(--accent);
+  color: var(--accent-fg);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: transparent;
+  color: var(--fg-muted);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--fg);
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fg-muted);
+}

@@ -1,0 +1,131 @@
+---
+interface Props {
+  label: string;
+  themes: { light: string; dark: string; blue: string; green: string };
+}
+const { label, themes } = Astro.props;
+---
+
+<div class="theme-selector" title={label}>
+  <button class="btn-ghost theme-toggle" aria-label={label}>
+    <span class="theme-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+    </span>
+  </button>
+  <div class="theme-dropdown" role="menu" aria-label={label}>
+    <button class="theme-option" data-theme="light" role="menuitem">
+      <span class="theme-swatch" style="background: linear-gradient(135deg, #f8f8f8 50%, #6366f1 50%)"></span>
+      {themes.light}
+    </button>
+    <button class="theme-option" data-theme="dark" role="menuitem">
+      <span class="theme-swatch" style="background: linear-gradient(135deg, #1a1a1a 50%, #818cf8 50%)"></span>
+      {themes.dark}
+    </button>
+    <button class="theme-option" data-theme="blue" role="menuitem">
+      <span class="theme-swatch" style="background: linear-gradient(135deg, #e8f0fe 50%, #2563eb 50%)"></span>
+      {themes.blue}
+    </button>
+    <button class="theme-option" data-theme="green" role="menuitem">
+      <span class="theme-swatch" style="background: linear-gradient(135deg, #ecfdf5 50%, #059669 50%)"></span>
+      {themes.green}
+    </button>
+  </div>
+</div>
+
+<style>
+  .theme-selector {
+    position: relative;
+  }
+
+  .theme-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 0.4rem;
+    min-width: 130px;
+    box-shadow: 0 8px 24px var(--shadow);
+    z-index: 100;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .theme-selector.open .theme-dropdown {
+    display: flex;
+  }
+
+  .theme-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: 0.5rem;
+    border: none;
+    background: transparent;
+    color: var(--fg);
+    font-size: 0.8rem;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.15s ease;
+  }
+
+  .theme-option:hover,
+  .theme-option.active {
+    background-color: var(--bg-card-hover);
+  }
+
+  .theme-swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = 'xavi-theme';
+
+  function applyTheme(theme: string) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem(STORAGE_KEY, theme);
+    document.querySelectorAll('.theme-option').forEach((btn) => {
+      btn.classList.toggle('active', (btn as HTMLElement).dataset.theme === theme);
+    });
+  }
+
+  function initThemeSelector() {
+    const selector = document.querySelector('.theme-selector');
+    const toggle = document.querySelector('.theme-toggle');
+    const options = document.querySelectorAll('.theme-option');
+    const currentTheme = localStorage.getItem(STORAGE_KEY) || 'light';
+
+    applyTheme(currentTheme);
+
+    toggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      selector?.classList.toggle('open');
+    });
+
+    options.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        applyTheme((btn as HTMLElement).dataset.theme || 'light');
+        selector?.classList.remove('open');
+      });
+    });
+
+    document.addEventListener('click', () => {
+      selector?.classList.remove('open');
+    });
+  }
+
+  initThemeSelector();
+  document.addEventListener('astro:page-load', initThemeSelector);
+</script>
