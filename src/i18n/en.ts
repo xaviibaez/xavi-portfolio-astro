@@ -14,6 +14,7 @@ export const en = {
     bio: 'Microservices nerd building cloud-native payment systems. 7+ years crafting distributed architectures with Java, TypeScript, and a lot of coffee.',
     cta: 'View my work',
     ctaBlog: 'Read my blog',
+    ctaCV: 'Download CV',
   },
   about: {
     title: 'About me',

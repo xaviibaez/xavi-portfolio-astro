@@ -16,6 +16,7 @@ export const es: Translations = {
     bio: 'Apasionado de los microservicios construyendo sistemas de pago cloud-native. Más de 7 años diseñando arquitecturas distribuidas con Java, TypeScript y mucho café.',
     cta: 'Ver mi trabajo',
     ctaBlog: 'Leer mi blog',
+    ctaCV: 'Descargar CV',
   },
   about: {
     title: 'Sobre mí',
