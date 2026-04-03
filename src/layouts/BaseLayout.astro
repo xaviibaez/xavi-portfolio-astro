@@ -27,6 +27,11 @@ const {
 
     <!-- Prevent flash of wrong theme -->
     <script is:inline src="/theme-init.js"></script>
+    <!-- Theme switcher -->
+    <script>
+      import { themeChange } from 'theme-change';
+      themeChange();
+    </script>
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />

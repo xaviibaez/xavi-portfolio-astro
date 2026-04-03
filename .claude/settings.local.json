@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node -e \"const pkg = require\\('./package.json'\\); console.log\\(JSON.stringify\\({react: pkg.dependencies?.react, astroReact: pkg.dependencies?.['@astrojs/react'] || pkg.devDependencies?.['@astrojs/react']}, null, 2\\)\\)\")"
+      "Bash(node -e \"const pkg = require\\('./package.json'\\); console.log\\(JSON.stringify\\({react: pkg.dependencies?.react, astroReact: pkg.dependencies?.['@astrojs/react'] || pkg.devDependencies?.['@astrojs/react']}, null, 2\\)\\)\")",
+      "Bash(npm install:*)",
+      "Bash(pnpm add:*)"
     ]
   }
 }

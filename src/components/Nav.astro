@@ -20,18 +20,6 @@ if (lang === 'en') {
 }
 ---
 
-<script is:inline>
-  document.addEventListener('click', function (e) {
-    var btn = e.target.closest('[data-theme-key]');
-    if (!btn) return;
-    var theme = btn.getAttribute('data-theme-key');
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('xavi-theme', theme);
-    var details = btn.closest('details');
-    if (details) details.open = false;
-  });
-</script>
-
 <NavReact
   client:load
   lang={lang}

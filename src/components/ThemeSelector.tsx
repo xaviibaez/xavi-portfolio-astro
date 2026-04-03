@@ -35,8 +35,9 @@ export default function ThemeSelector({ label, themes }: Props) {
         {themeEntries.map(([key, name]) => (
           <button
             key={key}
-            data-theme-key={key}
-            className="theme-btn flex items-center gap-2 px-2.5 py-2 rounded-lg border-none text-[0.8rem] cursor-pointer w-full text-left transition-colors duration-150 hover:bg-bg-card-hover"
+            data-set-theme={key}
+            data-act-class="bg-bg-card-hover"
+            className="flex items-center gap-2 px-2.5 py-2 rounded-lg border-none text-[0.8rem] cursor-pointer w-full text-left transition-colors duration-150 hover:bg-bg-card-hover"
             style={{ background: 'transparent', color: 'var(--fg)' }}
             role="menuitem"
           >
