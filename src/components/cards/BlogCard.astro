@@ -19,116 +19,31 @@ const posts = allPosts
   .slice(0, 2);
 ---
 
-<div class="bento-card blog-card" id="blog">
-  <div class="blog-header">
-    <p class="card-label text-muted">{t.blog.title}</p>
-    <a href={`${base}/blog`} class="btn-ghost view-all">
+<div class="bento-card bento-col-2 flex flex-col gap-3" id="blog">
+  <div class="flex items-center justify-between">
+    <p class="text-muted text-[0.75rem] font-semibold uppercase tracking-widest">{t.blog.title}</p>
+    <a href={`${base}/blog`} class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[0.75rem] no-underline border transition-all duration-150 text-fg-muted border-border bg-transparent">
       {t.blog.allPosts}
       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
     </a>
   </div>
 
   {posts.length === 0 ? (
-    <p class="text-muted" style="font-size: 0.85rem;">{t.blog.noPosts}</p>
+    <p class="text-muted text-[0.85rem]">{t.blog.noPosts}</p>
   ) : (
-    <div class="blog-posts">
+    <div class="flex flex-col gap-2 flex-1">
       {posts.map((post) => (
-        <a href={`${base}/blog/${post.id.split('/').pop()}`} class="blog-post-item">
-          <div class="post-meta">
-            <span class="post-date text-muted">
+        <a href={`${base}/blog/${post.id.split('/').pop()}`} class="flex flex-col gap-1 p-3 rounded-xl border no-underline transition-colors duration-150 flex-1 border-border bg-[var(--bg)] hover:bg-bg-card-hover">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-muted font-mono text-[0.72rem]">
               {format(post.data.pubDate, 'MMM d, yyyy')}
             </span>
             {post.data.tags[0] && <span class="tag">{post.data.tags[0]}</span>}
           </div>
-          <span class="post-title">{post.data.title}</span>
-          <p class="post-desc text-muted">{post.data.description}</p>
+          <span class="font-semibold text-[0.88rem] leading-snug text-fg">{post.data.title}</span>
+          <p class="text-muted text-[0.78rem] leading-relaxed line-clamp-2">{post.data.description}</p>
         </a>
       ))}
     </div>
   )}
 </div>
-
-<style>
-  @media (min-width: 900px) {
-    .blog-card {
-      grid-column: span 2;
-    }
-  }
-
-  .blog-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .blog-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .card-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .view-all {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.6rem;
-  }
-
-  .blog-posts {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex: 1;
-  }
-
-  .blog-post-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    padding: 0.75rem;
-    border-radius: 0.75rem;
-    border: 1px solid var(--border);
-    background-color: var(--bg);
-    text-decoration: none;
-    transition: background-color 0.15s ease;
-    flex: 1;
-  }
-
-  .blog-post-item:hover {
-    background-color: var(--bg-card-hover);
-  }
-
-  .post-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .post-date {
-    font-size: 0.72rem;
-    font-family: monospace;
-  }
-
-  .post-title {
-    font-weight: 600;
-    font-size: 0.88rem;
-    color: var(--fg);
-    line-height: 1.3;
-  }
-
-  .post-desc {
-    font-size: 0.78rem;
-    line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-</style>

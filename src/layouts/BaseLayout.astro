@@ -26,13 +26,7 @@ const {
     <title>{title}</title>
 
     <!-- Prevent flash of wrong theme -->
-    <script is:inline>
-      (function () {
-        const saved = localStorage.getItem('xavi-theme');
-        const theme = saved || 'light';
-        document.documentElement.setAttribute('data-theme', theme);
-      })();
-    </script>
+    <script is:inline src="/theme-init.js"></script>
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
@@ -41,34 +35,16 @@ const {
   </head>
   <body>
     <Nav lang={lang} />
-    <main>
+    <main class="w-full min-h-[calc(100vh-3.5rem-60px)]">
       <slot />
     </main>
-    <footer class="footer">
-      <div class="footer-inner">
-        <p class="text-muted" style="font-size: 0.85rem;">
+    <footer class="border-t border-border px-6 py-5 mt-16">
+      <div class="max-w-[1200px] mx-auto text-center">
+        <p class="text-muted text-[0.85rem]">
           © {new Date().getFullYear()} Xavi Ibáñez Martínez · Built with
-          <a href="https://astro.build" style="color: var(--accent); text-decoration: none;">Astro</a>
+          <a href="https://astro.build" class="text-accent no-underline">Astro</a>
         </p>
       </div>
     </footer>
   </body>
 </html>
-
-<style>
-  main {
-    min-height: calc(100vh - 3.5rem - 60px);
-  }
-
-  .footer {
-    border-top: 1px solid var(--border);
-    padding: 1.25rem 1.5rem;
-    margin-top: 4rem;
-  }
-
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-  }
-</style>

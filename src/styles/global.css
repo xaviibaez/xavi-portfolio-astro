@@ -1,9 +1,30 @@
 @import "tailwindcss";
+@plugin "daisyui" {
+  themes: false;
+}
+@plugin "@tailwindcss/typography";
+
+/* ─── Tailwind v4 Design Tokens ─────────────────────────────────────────────── */
+
+@theme {
+  --breakpoint-bento: 900px;
+}
+
+@theme inline {
+  --color-fg:           var(--fg);
+  --color-fg-muted:     var(--fg-muted);
+  --color-accent:       var(--accent);
+  --color-accent-muted: var(--accent-muted);
+  --color-bg-card:      var(--bg-card);
+  --color-bg-card-hover: var(--bg-card-hover);
+  --color-border:       var(--border);
+}
 
 /* ─── Color Themes ─────────────────────────────────────────────────────────── */
 
 :root,
 [data-theme="light"] {
+  /* Custom theme vars */
   --bg: #f8f8f8;
   --bg-card: #ffffff;
   --bg-card-hover: #f0f0f0;
@@ -15,6 +36,18 @@
   --accent-fg: #ffffff;
   --accent-muted: #eef2ff;
   --shadow: rgba(0, 0, 0, 0.06);
+  /* DaisyUI color vars — makes btn-primary, badge-primary, etc. work */
+  --color-primary: #6366f1;
+  --color-primary-content: #ffffff;
+  --color-base-100: #f8f8f8;
+  --color-base-200: #ffffff;
+  --color-base-300: #f0f0f0;
+  --color-base-content: #0a0a0a;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+  --border-btn: 1px;
+  --depth: 0;
+  --noise: 0;
 }
 
 [data-theme="dark"] {
@@ -29,6 +62,17 @@
   --accent-fg: #0f0f0f;
   --accent-muted: #1e1b4b;
   --shadow: rgba(0, 0, 0, 0.3);
+  --color-primary: #818cf8;
+  --color-primary-content: #0f0f0f;
+  --color-base-100: #0f0f0f;
+  --color-base-200: #1a1a1a;
+  --color-base-300: #222222;
+  --color-base-content: #fafafa;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+  --border-btn: 1px;
+  --depth: 0;
+  --noise: 0;
 }
 
 [data-theme="blue"] {
@@ -43,6 +87,17 @@
   --accent-fg: #ffffff;
   --accent-muted: #dbeafe;
   --shadow: rgba(37, 99, 235, 0.1);
+  --color-primary: #2563eb;
+  --color-primary-content: #ffffff;
+  --color-base-100: #e8f0fe;
+  --color-base-200: #ffffff;
+  --color-base-300: #dbeafe;
+  --color-base-content: #1e3a5f;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+  --border-btn: 1px;
+  --depth: 0;
+  --noise: 0;
 }
 
 [data-theme="green"] {
@@ -57,6 +112,17 @@
   --accent-fg: #ffffff;
   --accent-muted: #d1fae5;
   --shadow: rgba(5, 150, 105, 0.1);
+  --color-primary: #059669;
+  --color-primary-content: #ffffff;
+  --color-base-100: #ecfdf5;
+  --color-base-200: #ffffff;
+  --color-base-300: #d1fae5;
+  --color-base-content: #14532d;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+  --border-btn: 1px;
+  --depth: 0;
+  --noise: 0;
 }
 
 /* ─── Base Styles ───────────────────────────────────────────────────────────── */
@@ -72,6 +138,7 @@ html {
 }
 
 body {
+  width: 100%;
   background-color: var(--bg);
   color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
@@ -79,13 +146,36 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* ─── Bento Grid Layout ─────────────────────────────────────────────────────── */
+
+@media (min-width: 560px) {
+  .bento-grid-4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .bento-grid-4col {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .bento-col-2 {
+    grid-column: span 2;
+  }
+
+  .bento-col-2-row-2 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+
 /* ─── Bento Card ────────────────────────────────────────────────────────────── */
 
 .bento-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 1.25rem;
-  padding: 1.5rem;
+  border-radius: 1.5rem;
+  padding: 2rem;
   box-shadow: 0 1px 3px var(--shadow);
   transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   overflow: hidden;
@@ -119,45 +209,49 @@ body {
   border: 1px solid var(--border);
 }
 
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  background-color: var(--accent);
-  color: var(--accent-fg);
-  text-decoration: none;
-  transition: background-color 0.15s ease;
-  cursor: pointer;
-  border: none;
+/* ─── Gradient Utilities ────────────────────────────────────────────────────── */
+
+.bg-gradient-accent {
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
 }
 
-.btn-primary:hover {
-  background-color: var(--accent-hover);
+.bg-gradient-contact {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--accent-muted) 100%);
 }
 
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.4rem 0.75rem;
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  background-color: transparent;
-  color: var(--fg-muted);
-  text-decoration: none;
+/* ─── DaisyUI Overrides ─────────────────────────────────────────────────────── */
+
+.hero-actions .btn-ghost:hover {
+  background-color: var(--bg-card-hover) !important;
+  color: var(--fg) !important;
+  border-color: var(--border) !important;
+}
+
+/* ─── Prose (blog posts) ────────────────────────────────────────────────────── */
+
+.prose {
+  --tw-prose-body: var(--fg);
+  --tw-prose-headings: var(--fg);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--fg);
+  --tw-prose-code: var(--fg);
+  --tw-prose-pre-bg: var(--bg-card);
+  --tw-prose-counters: var(--fg-muted);
+  --tw-prose-bullets: var(--fg-muted);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quote-borders: var(--accent);
+  --tw-prose-captions: var(--fg-muted);
+}
+
+.prose pre,
+.prose :not(pre) > code {
+  background-color: var(--bg-card);
   border: 1px solid var(--border);
-  transition: all 0.15s ease;
-  cursor: pointer;
 }
 
-.btn-ghost:hover {
-  background-color: var(--bg-card-hover);
-  color: var(--fg);
+.prose blockquote {
+  border-color: var(--accent);
+  color: var(--fg-muted);
 }
 
 /* ─── Scrollbar ─────────────────────────────────────────────────────────────── */

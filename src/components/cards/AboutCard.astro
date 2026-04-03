@@ -8,65 +8,17 @@ interface Props {
 const { t } = Astro.props;
 ---
 
-<div class="bento-card about-card">
-  <p class="card-label text-muted">{t.about.title}</p>
-  <p class="about-text">{t.about.text}</p>
-  <div class="about-meta">
-    <span class="meta-chip">
+<div class="bento-card bento-col-2 flex flex-col gap-3">
+  <p class="text-muted text-[0.75rem] font-semibold uppercase tracking-widest">{t.about.title}</p>
+  <p class="text-[0.9rem] leading-relaxed flex-1 text-fg-muted">{t.about.text}</p>
+  <div class="flex gap-2 flex-wrap">
+    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[0.75rem] font-medium border bg-accent-muted text-accent border-border">
       <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
       Barcelona
     </span>
-    <span class="meta-chip">
+    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[0.75rem] font-medium border bg-accent-muted text-accent border-border">
       <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
       7+ years
     </span>
   </div>
 </div>
-
-<style>
-  @media (min-width: 900px) {
-    .about-card {
-      grid-column: span 2;
-    }
-  }
-
-  .about-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .card-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .about-text {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: var(--fg-muted);
-    flex: 1;
-  }
-
-  .about-meta {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .meta-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.25rem 0.6rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    background-color: var(--accent-muted);
-    color: var(--accent);
-    border: 1px solid var(--border);
-  }
-
-</style>

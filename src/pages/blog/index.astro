@@ -14,10 +14,10 @@ const posts = allPosts
 ---
 
 <BaseLayout lang={lang} title={`Blog — Xavi Ibáñez`}>
-  <div class="blog-page">
-    <div class="blog-header">
-      <h1 class="blog-title">{t.blog.allPosts}</h1>
-      <p class="blog-subtitle text-muted">
+  <div class="max-w-[800px] mx-auto px-6 py-12">
+    <div class="mb-10">
+      <h1 class="text-[2rem] font-extrabold tracking-[-0.03em] mb-2 text-fg">{t.blog.allPosts}</h1>
+      <p class="text-muted text-base leading-relaxed">
         Thoughts on distributed systems, clean architecture and software engineering.
       </p>
     </div>
@@ -25,7 +25,7 @@ const posts = allPosts
     {posts.length === 0 ? (
       <p class="text-muted">{t.blog.noPosts}</p>
     ) : (
-      <div class="posts-grid">
+      <div class="flex flex-col gap-4">
         {posts.map((post) => (
           <PostCard
             title={post.data.title}
@@ -41,34 +41,3 @@ const posts = allPosts
     )}
   </div>
 </BaseLayout>
-
-<style>
-  .blog-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 3rem 1.5rem;
-  }
-
-  .blog-header {
-    margin-bottom: 2.5rem;
-  }
-
-  .blog-title {
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 0.5rem;
-    color: var(--fg);
-  }
-
-  .blog-subtitle {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .posts-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-</style>
