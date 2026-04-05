@@ -54,7 +54,6 @@ export default function Nav({ lang, base, t, targetPath }: Props) {
           />
           <ThemeSelector
             label={t.theme.toggle}
-            themes={{ light: t.theme.light, dark: t.theme.dark, blue: t.theme.blue, green: t.theme.green }}
           />
         </div>
 

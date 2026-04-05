@@ -256,6 +256,18 @@ body {
   color: var(--fg-muted);
 }
 
+/* ─── Theme Toggle Icons ────────────────────────────────────────────────────── */
+
+[data-theme="light"] .icon-sun,
+[data-theme="blue"] .icon-sun,
+[data-theme="green"] .icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] .icon-moon {
+  display: none;
+}
+
 /* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
 
 ::-webkit-scrollbar {
