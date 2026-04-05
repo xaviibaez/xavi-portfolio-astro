@@ -138,6 +138,74 @@ Se añadió `aria-hidden="true"` a todos los SVGs decorativos: aquellos que est�
 
 ---
 
+## SEO fuera del código — Checklist de acciones manuales
+
+Todo lo que hay que hacer **una vez el sitio esté desplegado en producción** en `https://xavi.dev`.
+
+### Google Search Console (prioritario)
+
+1. **Verificar la propiedad**
+   - Entrar en [search.google.com/search-console](https://search.google.com/search-console)
+   - Añadir propiedad → tipo "Dominio" (cubre `http`, `https`, `www` y subdominios)
+   - Verificar con el método DNS TXT en tu registrador de dominio (Namecheap, GoDaddy, etc.)
+
+2. **Enviar el sitemap**
+   - En Search Console → Sitemaps → Añadir sitemap: `https://xavi.dev/sitemap-index.xml`
+   - Google lo crawleará y mostrará cuántas URLs ha indexado (debería ser 8: `/`, `/es/`, `/blog/`, `/es/blog/`, 2 posts × 2 idiomas, `/projects/`, `/es/projects/`)
+
+3. **Solicitar indexación manual de las páginas principales**
+   - Usar "Inspección de URL" en Search Console para cada URL importante (`/`, `/es/`)
+   - Clic en "Solicitar indexación" — acelera que Google las procese en días en vez de semanas
+
+4. **Comprobar el informe de cobertura**
+   - Search Console → Indexación → Páginas
+   - Verificar que no hay URLs marcadas como "Excluidas" o con errores 404
+
+### Bing Webmaster Tools (secundario pero fácil)
+
+5. **Verificar en Bing**
+   - Entrar en [bing.com/webmasters](https://www.bing.com/webmasters)
+   - Importar directamente desde Google Search Console (importa la verificación automáticamente)
+   - Enviar el sitemap: `https://xavi.dev/sitemap-index.xml`
+
+### Perfiles sociales y directorios
+
+6. **Actualizar la URL en LinkedIn**
+   - Perfil → Editar → Sitio web → añadir `https://xavi.dev`
+   - Esto crea un backlink de alta autoridad y hace que Google asocie el perfil con el dominio
+
+7. **Actualizar la URL en GitHub**
+   - Perfil de GitHub → Edit profile → Website → `https://xavi.dev`
+   - El JSON-LD ya incluye el `sameAs` con tu GitHub; tener la URL recíproca refuerza la señal
+
+8. **Compartir el portfolio en LinkedIn al publicarlo**
+   - Un post de LinkedIn con la URL activa el crawler de LinkedIn (Open Graph) y genera tráfico inicial
+   - El tráfico inicial real le indica a Google que la página es relevante
+
+### Rendimiento y Core Web Vitals
+
+9. **Ejecutar Lighthouse en producción**
+   - Abrir Chrome DevTools → pestaña Lighthouse → analizar `https://xavi.dev`
+   - Objetivo: Performance ≥ 90, Accessibility ≥ 95, SEO = 100, Best Practices = 100
+   - Los resultados en producción son más fiables que en local (sin extensiones, red real)
+
+10. **Verificar Core Web Vitals en Search Console**
+    - Search Console → Experiencia → Core Web Vitals
+    - LCP (Largest Contentful Paint) < 2.5s, CLS (Cumulative Layout Shift) < 0.1, INP < 200ms
+    - Aparece con datos reales una vez el sitio tenga tráfico suficiente
+
+### Monitorización continua
+
+11. **Configurar alertas de Search Console**
+    - Search Console → Configuración → Mensajes → activar notificaciones por email
+    - Te avisa si Google detecta problemas de indexación, penalizaciones manuales o caídas de rendimiento
+
+12. **Revisar el informe de rendimiento mensualmente**
+    - Search Console → Rendimiento → buscar qué queries traen impresiones
+    - Usar esos términos para orientar futuros posts del blog
+
+---
+
 ## Verificación
 
 - `pnpm run build` genera `dist/sitemap-index.xml` sin errores
