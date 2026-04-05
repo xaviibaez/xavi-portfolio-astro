@@ -1,6 +1,7 @@
 ---
 import Nav from '@/components/Nav.astro';
 import type { Lang } from '@/i18n/utils';
+import { ClientRouter } from 'astro:transitions';
 import '@/styles/global.css';
 
 interface Props {
@@ -25,12 +26,20 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
 
+    <ClientRouter />
+
     <!-- Prevent flash of wrong theme -->
     <script is:inline src="/theme-init.js"></script>
     <!-- Theme switcher -->
     <script>
       import { themeChange } from 'theme-change';
       themeChange();
+      // Re-apply theme after each page transition
+      document.addEventListener('astro:after-swap', () => {
+        const theme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        themeChange();
+      });
     </script>
 
     <!-- Open Graph -->
