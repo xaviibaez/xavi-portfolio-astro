@@ -30,15 +30,21 @@ const {
 
     <!-- Prevent flash of wrong theme -->
     <script is:inline src="/theme-init.js"></script>
-    <!-- Theme switcher -->
-    <script>
-      import { themeChange } from 'theme-change';
-      themeChange();
-      // Re-apply theme after each page transition
-      document.addEventListener('astro:after-swap', () => {
-        const theme = localStorage.getItem('theme') || 'light';
+    <!-- Theme toggle (event delegation persists across View Transitions) -->
+    <script is:inline>
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-toggle-theme]');
+        if (!btn) return;
+        var current = document.documentElement.getAttribute('data-theme') || 'light';
+        var themes = btn.getAttribute('data-toggle-theme').split(',');
+        var next = themes.find(function (t) { return t.trim() !== current; }) || themes[0].trim();
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+      // Re-apply saved theme after each page swap
+      document.addEventListener('astro:after-swap', function () {
+        var theme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', theme);
-        themeChange();
       });
     </script>
 
