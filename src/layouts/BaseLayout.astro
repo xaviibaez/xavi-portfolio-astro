@@ -15,6 +15,22 @@ const {
   title = 'Xavi Ibáñez — Senior Backend Engineer',
   description = 'Portfolio of Xavi Ibáñez Martínez, Senior Backend Engineer at BBVA Technology. Microservices, cloud-native systems, Java, TypeScript.',
 } = Astro.props;
+
+const canonicalURL = Astro.url.href;
+const ogLocale = lang === 'es' ? 'es_ES' : 'en_US';
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Xavi Ibáñez Martínez',
+  jobTitle: 'Senior Backend Engineer',
+  url: 'https://xavi.dev',
+  sameAs: [
+    'https://github.com/xaviibaez',
+    'https://www.linkedin.com/in/xavi-ib%C3%A1%C3%B1ez-mart%C3%ADnez-09a7b415a/',
+  ],
+  worksFor: { '@type': 'Organization', name: 'BBVA Technology' },
+});
 ---
 
 <!doctype html>
@@ -48,10 +64,18 @@ const {
       });
     </script>
 
+    <link rel="canonical" href={canonicalURL} />
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:site_name" content="xavi.dev" />
+
+    <!-- Structured data -->
+    <Fragment set:html={`<script type="application/ld+json">${jsonLd}</script>`} />
   </head>
   <body>
     <Nav lang={lang} />

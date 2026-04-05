@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://xavi.dev/sitemap-index.xml

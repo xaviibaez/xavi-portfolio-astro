@@ -37,7 +37,9 @@
       "Bash(cp \"C:\\\\Users\\\\Pc\\\\.claude\\\\skills\\\\webapp-testing\\\\SKILL.md\" \"C:\\\\Users\\\\Pc\\\\Desktop\\\\Code\\\\xavi-portfolio-astro\\\\.claude\\\\skills\\\\webapp-testing\\\\SKILL.md\")",
       "Bash(rm -rf \"C:\\\\Users\\\\Pc\\\\.claude\\\\skills\\\\playwright-skill\")",
       "Bash(rm -rf \"C:\\\\Users\\\\Pc\\\\.claude\\\\skills\\\\webapp-testing\")",
-      "WebSearch"
+      "WebSearch",
+      "Bash(pnpm run:*)",
+      "Bash(rm:*)"
     ]
   }
 }
