@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
 const base = lang === 'es' ? '/es' : '';
 
 const currentPath = Astro.url.pathname;
@@ -24,9 +24,9 @@ if (lang === 'en') {
   client:load
   lang={lang}
   base={base}
-  t={{
-    language: { toggle: t.language.toggle, en: t.language.en, es: t.language.es },
-    theme: { toggle: t.theme.toggle },
+  translation={{
+    language: { toggle: translation.language.toggle, en: translation.language.en, es: translation.language.es },
+    theme: { toggle: translation.theme.toggle },
   }}
   targetPath={targetPath}
 />

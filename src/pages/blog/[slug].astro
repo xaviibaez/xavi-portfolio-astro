@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const lang = 'en';
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
 ---
 
 <BaseLayout
@@ -28,14 +28,14 @@ const t = useTranslations(lang);
   <article class="max-w-[720px] mx-auto px-6 py-8 pb-16">
     <div class="mb-8">
       <a href="/blog" class="btn btn-ghost btn-sm no-underline text-[0.85rem]">
-        ← {t.blog.backToBlog}
+        ← {translation.blog.backToBlog}
       </a>
     </div>
 
     <header class="mb-10 border-b border-border pb-8">
       <div class="flex items-center gap-3 flex-wrap mb-4 text-[0.85rem]">
         <time class="text-muted" datetime={post.data.pubDate.toISOString()}>
-          {t.blog.publishedOn} {format(post.data.pubDate, 'MMMM d, yyyy')}
+          {translation.blog.publishedOn} {format(post.data.pubDate, 'MMMM d, yyyy')}
         </time>
         <div class="flex gap-[0.35rem] flex-wrap">
           {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}

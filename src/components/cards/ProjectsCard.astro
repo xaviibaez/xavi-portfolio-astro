@@ -3,25 +3,25 @@ import type { Translations } from '@/i18n/en';
 import type { Lang } from '@/i18n/utils';
 
 interface Props {
-  t: Translations;
+  translation: Translations;
   lang: Lang;
 }
 
-const { t, lang } = Astro.props;
+const { translation, lang } = Astro.props;
 const base = lang === 'es' ? '/es' : '';
 ---
 
 <div class="bento-card bento-col-2-row-2 flex flex-col gap-4" id="projects">
   <div class="flex items-center justify-between">
-    <p class="text-muted text-[0.75rem] font-semibold uppercase tracking-widest">{t.projects.title}</p>
+    <p class="text-muted text-[0.75rem] font-semibold uppercase tracking-widest">{translation.projects.title}</p>
     <a href={`${base}/projects`} class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[0.75rem] no-underline border transition-all duration-150 text-fg-muted border-border bg-transparent hover:text-fg hover:border-accent">
-      {t.projects.viewAll}
+      {translation.projects.viewAll}
       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
     </a>
   </div>
 
   <div class="flex flex-col gap-3 flex-1">
-    {t.projects.items.slice(0, 3).map((project) => (
+    {translation.projects.items.slice(0, 3).map((project) => (
       <div class="flex items-start justify-between gap-3 p-8 rounded-xl border transition-colors duration-150 border-border bg-[var(--bg)] hover:bg-bg-card-hover">
         <div class="flex flex-col gap-1 flex-1 min-w-0">
           <span class="font-semibold text-[0.9rem] text-fg">{project.name}</span>

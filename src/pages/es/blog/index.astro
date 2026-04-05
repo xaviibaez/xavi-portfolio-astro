@@ -5,7 +5,7 @@ import { useTranslations } from '@/i18n/utils';
 import { getCollection } from 'astro:content';
 
 const lang = 'es';
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
@@ -16,14 +16,14 @@ const posts = allPosts
 <BaseLayout lang={lang} title={`Blog — Xavi Ibáñez`}>
   <div class="max-w-[800px] mx-auto px-6 py-12">
     <div class="mb-10">
-      <h1 class="text-[2rem] font-extrabold tracking-[-0.03em] mb-2 text-fg">{t.blog.allPosts}</h1>
+      <h1 class="text-[2rem] font-extrabold tracking-[-0.03em] mb-2 text-fg">{translation.blog.allPosts}</h1>
       <p class="text-muted text-base leading-relaxed">
         Reflexiones sobre sistemas distribuidos, arquitectura limpia e ingeniería de software.
       </p>
     </div>
 
     {posts.length === 0 ? (
-      <p class="text-muted">{t.blog.noPosts}</p>
+      <p class="text-muted">{translation.blog.noPosts}</p>
     ) : (
       <div class="flex flex-col gap-4">
         {posts.map((post) => (
@@ -34,7 +34,7 @@ const posts = allPosts
             tags={post.data.tags}
             slug={post.id}
             lang={lang}
-            readMore={t.blog.readMore}
+            readMore={translation.blog.readMore}
           />
         ))}
       </div>

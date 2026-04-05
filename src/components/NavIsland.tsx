@@ -9,11 +9,11 @@ interface NavTranslations {
 interface Props {
   lang: 'en' | 'es';
   base: string;
-  t: NavTranslations;
+  translation: NavTranslations;
   targetPath: string;
 }
 
-export default function Nav({ lang, base, t, targetPath }: Props) {
+export default function Nav({ lang, base, translation, targetPath }: Props) {
   return (
     <nav
       className="sticky top-0 z-50 border-b backdrop-blur-md"
@@ -28,11 +28,11 @@ export default function Nav({ lang, base, t, targetPath }: Props) {
         <div className="flex items-center gap-2 ml-auto">
           <LanguageSelector
             currentLang={lang}
-            label={t.language.toggle}
-            langNames={{ en: t.language.en, es: t.language.es }}
+            label={translation.language.toggle}
+            langNames={{ en: translation.language.en, es: translation.language.es }}
             targetPath={targetPath}
           />
-          <ThemeSelector label={t.theme.toggle} />
+          <ThemeSelector label={translation.theme.toggle} />
         </div>
       </div>
     </nav>

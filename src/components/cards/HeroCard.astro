@@ -2,10 +2,10 @@
 import type { Translations } from '@/i18n/en';
 
 interface Props {
-  t: Translations;
+  translation: Translations;
 }
 
-const { t } = Astro.props;
+const { translation } = Astro.props;
 ---
 
 <div class="bento-card bento-col-2-row-2 relative overflow-hidden flex flex-col justify-center">
@@ -14,22 +14,22 @@ const { t } = Astro.props;
       <span class="text-white font-bold text-[1.2rem] tracking-wide">XI</span>
     </div>
     <div class="flex flex-col gap-2">
-      <p class="text-muted text-[0.9rem] font-medium">{t.hero.greeting}</p>
-      <h1 class="text-[2rem] font-extrabold leading-tight text-fg tracking-[-0.03em]">{t.hero.name}</h1>
+      <p class="text-muted text-[0.9rem] font-medium">{translation.hero.greeting}</p>
+      <h1 class="text-[2rem] font-extrabold leading-tight text-fg tracking-[-0.03em]">{translation.hero.name}</h1>
       <p class="text-[0.95rem] font-medium">
-        <span class="accent">{t.hero.role}</span>
-        <span class="text-muted"> · {t.hero.company}</span>
+        <span class="accent">{translation.hero.role}</span>
+        <span class="text-muted"> · {translation.hero.company}</span>
       </p>
-      <p class="text-muted text-[0.9rem] leading-relaxed max-w-[380px]">{t.hero.bio}</p>
+      <p class="text-muted text-[0.9rem] leading-relaxed max-w-[380px]">{translation.hero.bio}</p>
       <div class="hero-actions flex gap-3 flex-wrap mt-2">
         <a href="#projects" class="btn btn-primary btn-sm gap-1.5 no-underline font-medium rounded-lg">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-          {t.hero.cta}
+          {translation.hero.cta}
         </a>
-        <a href="#blog" class="btn btn-ghost btn-sm no-underline rounded-lg text-fg-muted border-border">{t.hero.ctaBlog}</a>
+        <a href="#blog" class="btn btn-ghost btn-sm no-underline rounded-lg text-fg-muted border-border">{translation.hero.ctaBlog}</a>
         <a href="/xavi-ibanez-cv.pdf" download="Xavi_Ibanez_CV.pdf" class="btn btn-outline btn-primary btn-sm gap-1.5 no-underline font-semibold rounded-lg">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          {t.hero.ctaCV}
+          {translation.hero.ctaCV}
         </a>
       </div>
     </div>

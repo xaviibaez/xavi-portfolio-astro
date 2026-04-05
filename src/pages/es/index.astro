@@ -4,9 +4,9 @@ import BentoGrid from '@/components/BentoGrid.astro';
 import { useTranslations } from '@/i18n/utils';
 
 const lang = 'es';
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
 ---
 
 <BaseLayout lang={lang} title="Xavi Ibáñez — Senior Backend Engineer">
-  <BentoGrid t={t} lang={lang} />
+  <BentoGrid translation={translation} lang={lang} />
 </BaseLayout>
