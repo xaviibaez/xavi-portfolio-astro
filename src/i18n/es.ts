@@ -58,25 +58,42 @@ export const es: Translations = {
   projects: {
     title: 'Proyectos',
     viewAll: 'Ver todos los proyectos',
-    viewCode: 'Ver código',
     items: [
       {
         name: 'PetHome API',
         description: 'API RESTful para una plataforma de adopción de mascotas. Construida con TypeScript, Node.js y Express siguiendo principios de arquitectura limpia.',
         tags: ['TypeScript', 'Node.js', 'Express'],
-        url: 'https://github.com/xaviibaez/petHome-api',
+        image: '',
+        links: [
+          { label: 'Ver código', url: 'https://github.com/xaviibaez/petHome-api', icon: 'github' },
+        ],
       },
       {
         name: 'PetHome Frontend',
         description: 'Aplicación cliente Vue.js para la plataforma de adopción de mascotas. UI responsive con arquitectura de componentes moderna.',
         tags: ['Vue.js', 'JavaScript'],
-        url: 'https://github.com/xaviibaez/petHome-client',
+        image: '',
+        links: [
+          { label: 'Ver código', url: 'https://github.com/xaviibaez/petHome-client', icon: 'github' },
+        ],
       },
       {
         name: 'GoCD Docker Compose',
         description: 'Configuración Docker Compose para pipelines de CI/CD con GoCD. Infraestructura como código para entrega continua.',
         tags: ['Docker', 'GoCD', 'DevOps'],
-        url: 'https://github.com/xaviibaez/gocd-docker-compose',
+        image: '',
+        links: [
+          { label: 'Ver código', url: 'https://github.com/xaviibaez/gocd-docker-compose', icon: 'github' },
+        ],
+      },
+      {
+        name: 'RZ Powerhouse',
+        description: 'Landing page para un gimnasio de powerlifting en Sabadell. Diseño responsive con animaciones, integración e-commerce, datos estructurados SEO y contacto por WhatsApp.',
+        tags: ['HTML', 'CSS', 'JavaScript', 'SEO'],
+        image: 'https://www.rzpowerhouse.com/assets/images/openGraph.jpg',
+        links: [
+          { label: 'Visitar', url: 'https://www.rzpowerhouse.com', icon: 'external' },
+        ],
       },
     ],
   },

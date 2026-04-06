@@ -56,25 +56,42 @@ export const en = {
   projects: {
     title: 'Projects',
     viewAll: 'View all projects',
-    viewCode: 'View code',
     items: [
       {
         name: 'PetHome API',
         description: 'RESTful API for a pet adoption platform. Built with TypeScript, Node.js and Express following clean architecture principles.',
         tags: ['TypeScript', 'Node.js', 'Express'],
-        url: 'https://github.com/xaviibaez/petHome-api',
+        image: '',
+        links: [
+          { label: 'View code', url: 'https://github.com/xaviibaez/petHome-api', icon: 'github' },
+        ],
       },
       {
         name: 'PetHome Frontend',
         description: 'Vue.js client application for the pet adoption platform. Responsive UI with modern component architecture.',
         tags: ['Vue.js', 'JavaScript'],
-        url: 'https://github.com/xaviibaez/petHome-client',
+        image: '',
+        links: [
+          { label: 'View code', url: 'https://github.com/xaviibaez/petHome-client', icon: 'github' },
+        ],
       },
       {
         name: 'GoCD Docker Compose',
         description: 'Docker Compose setup for GoCD CI/CD pipelines. Infrastructure-as-code for continuous delivery.',
         tags: ['Docker', 'GoCD', 'DevOps'],
-        url: 'https://github.com/xaviibaez/gocd-docker-compose',
+        image: '',
+        links: [
+          { label: 'View code', url: 'https://github.com/xaviibaez/gocd-docker-compose', icon: 'github' },
+        ],
+      },
+      {
+        name: 'RZ Powerhouse',
+        description: 'Landing page for a powerlifting gym in Sabadell. Responsive design with animations, e-commerce integration, SEO structured data and WhatsApp contact.',
+        tags: ['HTML', 'CSS', 'JavaScript', 'SEO'],
+        image: 'https://www.rzpowerhouse.com/assets/images/openGraph.jpg',
+        links: [
+          { label: 'Visit site', url: 'https://www.rzpowerhouse.com', icon: 'external' },
+        ],
       },
     ],
   },
