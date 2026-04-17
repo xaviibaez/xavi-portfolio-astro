@@ -17,19 +17,28 @@ interface Props {
 const { translation, lang } = Astro.props;
 ---
 
-<div class="max-w-[1200px] mx-auto px-5 py-10 sm:px-10 sm:py-14">
-  <div class="bento-grid-4col grid auto-rows-[minmax(180px,auto)] gap-5 sm:gap-6">
-    <!-- Row 1-2: Hero (2x2) + Experience (2x2) -->
-    <HeroCard translation={translation} />
-    <ExperienceCard translation={translation} />
+<div class="bento-wrapper">
+  <div class="bento-bg" aria-hidden="true">
+    <div class="bento-blob bento-blob-1"></div>
+    <div class="bento-blob bento-blob-2"></div>
+    <div class="bento-blob bento-blob-3"></div>
+    <div class="bento-blob bento-blob-4"></div>
+    <div class="bento-blob bento-blob-5"></div>
+  </div>
+  <div class="bento-content max-w-[1200px] mx-auto px-5 py-10 sm:px-10 sm:py-14">
+    <div class="bento-grid-4col grid auto-rows-[minmax(180px,auto)] gap-5 sm:gap-6">
+      <!-- Row 1-2: Hero (2x2) + Experience (2x2) -->
+      <HeroCard translation={translation} />
+      <ExperienceCard translation={translation} />
 
-    <!-- Row 3: About (2x1) + Skills (2x1) -->
-    <AboutCard translation={translation} />
-    <SkillsCard translation={translation} />
+      <!-- Row 3: About (2x1) + Skills (2x1) -->
+      <AboutCard translation={translation} />
+      <SkillsCard translation={translation} />
 
-    <!-- Row 4-5: Projects (2x2) + Blog (2x1) + Contact (2x1) -->
-    <ProjectsCard translation={translation} lang={lang} />
-    <BlogCard translation={translation} lang={lang} />
-    <ContactCard translation={translation} />
+      <!-- Row 4-5: Projects (2x2) + Blog (2x1) + Contact (2x1) -->
+      <ProjectsCard translation={translation} lang={lang} />
+      <BlogCard translation={translation} lang={lang} />
+      <ContactCard translation={translation} />
+    </div>
   </div>
 </div>
