@@ -39,7 +39,11 @@
       "Bash(rm -rf \"C:\\\\Users\\\\Pc\\\\.claude\\\\skills\\\\webapp-testing\")",
       "WebSearch",
       "Bash(pnpm run:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(pip install:*)",
+      "WebFetch(domain:www.rzpowerhouse.com)",
+      "Bash(node --experimental-vm-modules \"C:/tmp/screenshot.js\")",
+      "Bash(curl -L \"https://www.rzpowerhouse.com/assets/images/openGraph.jpg\" -o \"C:/Users/Pc/Desktop/Code/xavi-portfolio-astro/public/projects/rzpowerhouse.jpg\")"
     ]
   }
 }
