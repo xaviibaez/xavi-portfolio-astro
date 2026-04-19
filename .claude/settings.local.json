@@ -43,7 +43,15 @@
       "Bash(pip install:*)",
       "WebFetch(domain:www.rzpowerhouse.com)",
       "Bash(node --experimental-vm-modules \"C:/tmp/screenshot.js\")",
-      "Bash(curl -L \"https://www.rzpowerhouse.com/assets/images/openGraph.jpg\" -o \"C:/Users/Pc/Desktop/Code/xavi-portfolio-astro/public/projects/rzpowerhouse.jpg\")"
+      "Bash(curl -L \"https://www.rzpowerhouse.com/assets/images/openGraph.jpg\" -o \"C:/Users/Pc/Desktop/Code/xavi-portfolio-astro/public/projects/rzpowerhouse.jpg\")",
+      "Bash(git *)",
+      "Bash(ls *)",
+      "Bash(pnpm build *)",
+      "Bash(npm run *)",
+      "Bash(/usr/local/bin/node --version)",
+      "Read(//usr/local/bin/**)",
+      "Bash(export PATH=\"$HOME/.nvm/versions/node/v22.22.2/bin:$PATH\")",
+      "Bash(npx astro *)"
     ]
   }
 }
