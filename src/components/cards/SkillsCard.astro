@@ -3,9 +3,10 @@ import type { Translations } from '@/i18n/en';
 
 interface Props {
   translation: Translations;
+  fullWidth?: boolean;
 }
 
-const { translation } = Astro.props;
+const { translation, fullWidth = false } = Astro.props;
 
 const skillGroups = [
   {
@@ -35,7 +36,7 @@ const skillGroups = [
 ];
 ---
 
-<div class="bento-card bento-col-2 flex flex-col gap-4">
+<div class:list={["bento-card flex flex-col gap-4", fullWidth ? "bento-col-4" : "bento-col-2"]}>
   <p class="text-muted text-[0.75rem] font-semibold uppercase tracking-widest">{translation.skills.title}</p>
   <div class="flex flex-col gap-3">
     {skillGroups.map((group) => (

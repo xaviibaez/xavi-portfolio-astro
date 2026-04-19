@@ -2,7 +2,6 @@
 import type { Translations } from '@/i18n/en';
 import type { Lang } from '@/i18n/utils';
 import HeroCard from './cards/HeroCard.astro';
-import AboutCard from './cards/AboutCard.astro';
 import SkillsCard from './cards/SkillsCard.astro';
 import ExperienceCard from './cards/ExperienceCard.astro';
 import ProjectsCard from './cards/ProjectsCard.astro';
@@ -31,9 +30,8 @@ const { translation, lang } = Astro.props;
       <HeroCard translation={translation} />
       <ExperienceCard translation={translation} />
 
-      <!-- Row 3: About (2x1) + Skills (2x1) -->
-      <AboutCard translation={translation} />
-      <SkillsCard translation={translation} />
+      <!-- Row 3: Skills (4 cols) -->
+      <SkillsCard translation={translation} fullWidth />
 
       <!-- Row 4-5: Projects (2x2) + Blog (2x1) + Contact (2x1) -->
       <ProjectsCard translation={translation} lang={lang} />
