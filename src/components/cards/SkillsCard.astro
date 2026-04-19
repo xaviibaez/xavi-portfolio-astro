@@ -7,31 +7,46 @@ interface Props {
 
 const { translation } = Astro.props;
 
-const skills = [
-  { name: 'Java', level: 5 },
-  { name: 'Spring Boot', level: 5 },
-  { name: 'TypeScript', level: 4 },
-  { name: 'Node.js', level: 4 },
-  { name: 'C#', level: 4 },
-  { name: '.NET', level: 3 },
-  { name: 'Angular', level: 3 },
-  { name: 'React', level: 3 },
-  { name: 'Vue.js', level: 3 },
-  { name: 'Docker', level: 4 },
-  { name: 'Kubernetes', level: 3 },
-  { name: 'AWS', level: 3 },
-  { name: 'Redis', level: 4 },
-  { name: 'PostgreSQL', level: 4 },
-  { name: 'Oracle', level: 3 },
-  { name: 'Elasticsearch', level: 3 },
+const skillGroups = [
+  {
+    label: translation.skills.backend,
+    skills: ['Java', 'Kotlin', 'Spring Boot', 'Spring Batch', 'Python', 'Django', 'C#', '.NET', 'PHP', 'Laravel', 'Node.js', 'Express.js'],
+  },
+  {
+    label: translation.skills.frontend,
+    skills: ['TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Angular', 'React', 'Vue.js', 'Nuxt', 'Astro', 'Tailwind CSS'],
+  },
+  {
+    label: translation.skills.databases,
+    skills: ['Oracle', 'MySQL', 'SQL Server', 'PL/SQL', 'MongoDB', 'Elasticsearch', 'Redis'],
+  },
+  {
+    label: translation.skills.infra,
+    skills: ['AWS', 'Docker', 'Kafka', 'Jenkins'],
+  },
+  {
+    label: translation.skills.testing,
+    skills: ['JUnit', 'Mockito', 'Jest'],
+  },
+  {
+    label: translation.skills.practices,
+    skills: ['Microservices', 'DDD', 'CQRS', 'TDD', 'ATDD', 'ED', 'CI/CD', 'Hexagonal', 'Reactive'],
+  },
 ];
 ---
 
 <div class="bento-card bento-col-2 flex flex-col gap-4">
   <p class="text-muted text-[0.75rem] font-semibold uppercase tracking-widest">{translation.skills.title}</p>
-  <div class="flex flex-wrap gap-2">
-    {skills.map((skill) => (
-      <span class="tag">{skill.name}</span>
+  <div class="flex flex-col gap-3">
+    {skillGroups.map((group) => (
+      <div class="flex flex-col gap-1.5">
+        <span class="text-muted text-[0.7rem] font-semibold uppercase tracking-wider">{group.label}</span>
+        <div class="flex flex-wrap gap-1.5">
+          {group.skills.map((skill) => (
+            <span class="tag">{skill}</span>
+          ))}
+        </div>
+      </div>
     ))}
   </div>
 </div>

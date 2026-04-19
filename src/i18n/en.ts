@@ -22,6 +22,12 @@ export const en = {
   },
   skills: {
     title: 'Tech stack',
+    backend: 'Backend',
+    frontend: 'Frontend',
+    databases: 'Databases',
+    infra: 'Cloud & Infra',
+    testing: 'Testing',
+    practices: 'Practices',
   },
   experience: {
     title: 'Experience',

@@ -24,6 +24,12 @@ export const es: Translations = {
   },
   skills: {
     title: 'Stack tecnológico',
+    backend: 'Backend',
+    frontend: 'Frontend',
+    databases: 'Bases de datos',
+    infra: 'Cloud e Infra',
+    testing: 'Testing',
+    practices: 'Prácticas',
   },
   experience: {
     title: 'Experiencia',
