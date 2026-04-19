@@ -34,26 +34,22 @@ export const en = {
     current: 'Current',
     jobs: [
       {
-        role: 'Software Engineer',
-        company: 'BBVA Technology',
+company: 'BBVA Technology',
         period: 'Oct 2023 — Present',
         description: 'Cloud-native online payment system in a cross-functional team. Java, Spring Boot, Python, Kafka, ElasticSearch, AWS (ECS, EC2, Lambda). ATDD, DDD, CI/CD, microservices, reactive programming.',
       },
       {
-        role: 'Software Engineer',
-        company: 'Hiberus',
+company: 'Hiberus',
         period: 'Apr 2022 — Oct 2023',
         description: 'Multiple REST APIs and client-side projects from scratch. TypeScript with Angular and ExpressJS, Java with Spring Boot, PHP with Laravel, Oracle, MySQL, Redis, AWS.',
       },
       {
-        role: 'Software Engineer',
-        company: 'Babel',
+company: 'Babel',
         period: 'Jul 2020 — Apr 2022',
         description: 'Internal web app and REST API for Linea Directa and Caser. Java with Spring Boot and Spring Batch, Oracle, MySQL, PL/SQL, Liferay.',
       },
       {
-        role: 'Software Engineer',
-        company: 'EY',
+company: 'EY',
         period: 'Jul 2018 — Jul 2020',
         description: 'REST API for NH Hotels using Java, Spring Boot, C#, .NET, Jenkins, AWS. Internal warehouse desktop app with Java, Swing and Oracle.',
       },

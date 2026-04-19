@@ -24,14 +24,13 @@ const { translation } = Astro.props;
         )}
         <div class="col-[2] row-[1/-1] flex flex-col gap-0.5 pb-5">
           <div class="flex items-center gap-2 flex-wrap">
-            <span class="font-semibold text-[0.9rem] text-fg">{job.role}</span>
+            <span class="font-semibold text-[0.9rem] text-fg">{job.company}</span>
             {i === 0 && (
               <span class="text-[0.65rem] font-semibold px-1.5 py-0.5 rounded-full uppercase tracking-wide bg-accent-muted text-accent">
                 {translation.experience.current}
               </span>
             )}
           </div>
-          <span class="text-muted text-[0.85rem] font-medium">{job.company}</span>
           <span class="text-muted text-[0.75rem] font-mono">{job.period}</span>
           <p class="text-muted text-[0.82rem] leading-relaxed mt-1">{job.description}</p>
         </div>
