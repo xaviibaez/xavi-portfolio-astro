@@ -38,15 +38,11 @@ const skillGroups = [
 
 <div class:list={["bento-card flex flex-col gap-4", fullWidth ? "bento-col-4" : "bento-col-2"]}>
   <p class="text-muted text-[0.75rem] font-semibold uppercase tracking-widest">{translation.skills.title}</p>
-  <div class="flex flex-col gap-3">
+  <div class="flex flex-col divide-y divide-border">
     {skillGroups.map((group) => (
-      <div class="flex flex-col gap-1.5">
-        <span class="text-muted text-[0.7rem] font-semibold uppercase tracking-wider">{group.label}</span>
-        <div class="flex flex-wrap gap-1.5">
-          {group.skills.map((skill) => (
-            <span class="tag">{skill}</span>
-          ))}
-        </div>
+      <div class="grid grid-cols-[110px_1fr] gap-4 py-2.5 first:pt-0 last:pb-0">
+        <span class="text-muted text-[0.72rem] font-semibold uppercase tracking-wider pt-0.5">{group.label}</span>
+        <span class="text-fg text-[0.88rem] leading-relaxed">{group.skills.join(' · ')}</span>
       </div>
     ))}
   </div>
