@@ -1,6 +1,7 @@
 ---
 import Nav from '@/components/Nav.astro';
 import type { Lang } from '@/i18n/utils';
+import { getOgLocale } from '@/i18n/utils';
 import { ClientRouter } from 'astro:transitions';
 import '@/styles/global.css';
 
@@ -17,7 +18,7 @@ const {
 } = Astro.props;
 
 const canonicalURL = Astro.url.href;
-const ogLocale = lang === 'es' ? 'es_ES' : 'en_US';
+const ogLocale = getOgLocale(lang);
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',

@@ -1,7 +1,7 @@
 ---
 import NavReact from './NavIsland';
 import type { Lang } from '@/i18n/utils';
-import { useTranslations } from '@/i18n/utils';
+import { useTranslations, getLangBase } from '@/i18n/utils';
 
 interface Props {
   lang: Lang;
@@ -9,7 +9,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const translation = useTranslations(lang);
-const base = lang === 'es' ? '/es' : '';
+const base = getLangBase(lang);
 
 const currentPath = Astro.url.pathname;
 let targetPath = '/';

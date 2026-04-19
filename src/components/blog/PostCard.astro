@@ -1,6 +1,7 @@
 ---
 import { format } from 'date-fns';
 import type { Lang } from '@/i18n/utils';
+import { getLangBase } from '@/i18n/utils';
 
 interface Props {
   title: string;
@@ -13,7 +14,7 @@ interface Props {
 }
 
 const { title, description, pubDate, tags, slug, lang, readMore } = Astro.props;
-const base = lang === 'es' ? '/es' : '';
+const base = getLangBase(lang);
 const postSlug = slug.split('/').pop();
 ---
 
