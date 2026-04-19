@@ -30,13 +30,13 @@ const { translation, lang } = Astro.props;
       <HeroCard translation={translation} />
       <ExperienceCard translation={translation} />
 
-      <!-- Row 3: Skills (4 cols) -->
-      <SkillsCard translation={translation} fullWidth />
-
-      <!-- Row 4-5: Projects (2x2) + Blog (2x1) + Contact (2x1) -->
+      <!-- Row 3-4: Projects (2x2) + Blog (2x1) + Contact (2x1) -->
       <ProjectsCard translation={translation} lang={lang} />
       <BlogCard translation={translation} lang={lang} />
       <ContactCard translation={translation} />
+
+      <!-- Row 5: Skills (4 cols) -->
+      <SkillsCard translation={translation} fullWidth />
     </div>
   </div>
 </div>

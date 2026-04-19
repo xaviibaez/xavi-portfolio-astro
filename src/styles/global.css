@@ -183,14 +183,13 @@ body {
   border-radius: 1.5rem;
   padding: 2rem;
   box-shadow: 0 1px 3px var(--shadow);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
   position: relative;
 }
 
 .bento-card:hover {
   box-shadow: 0 4px 16px var(--shadow);
-  transform: translateY(-1px);
 }
 
 /* ─── Animated Background (index only) ─────────────────────────────────────── */
