@@ -21,7 +21,7 @@ export const es: Translations = {
   },
   about: {
     title: 'Sobre mí',
-    text: 'Soy ingeniero backend especializado en sistemas cloud-native y arquitecturas de microservicios en BBVA Technology. Me apasiona el código limpio, las prácticas de extreme programming y las metodologías DevOps. Cuando no estoy lidiando con sistemas distribuidos, escribo sobre ingeniería de software y comparto lo que aprendo.',
+    text: 'Soy ingeniero backend especializado en sistemas cloud-native y arquitecturas de microservicios en BBVA Technology. Me apasiona el código limpio, las prácticas de extreme programming y las metodologías DevOps. Cuando no estoy lidiando con sistemas distribuidos, escribo sobre ingeniería de software y comparto lo que aprendo. Fuera del trabajo, disfruto de los videojuegos, el cine y explorando la historia y la filosofía.',
   },
   skills: {
     title: 'Stack tecnológico',
@@ -96,6 +96,33 @@ company: 'EY',
         image: 'https://www.rzpowerhouse.com/assets/images/openGraph.jpg',
         links: [
           { label: 'Visitar', url: 'https://www.rzpowerhouse.com', icon: 'external' },
+        ],
+      },
+      {
+        name: 'EGAF',
+        description: 'Portal de formación para el Gobierno de Aragón — cliente y servidor. Desarrollo full-stack con Angular y Java Spring Boot sobre Oracle.',
+        tags: ['TypeScript', 'Angular', 'Java', 'Spring Boot', 'Oracle', 'PL/SQL'],
+        image: '/egaf.webp',
+        links: [
+          { label: 'Visitar', url: 'https://aplicaciones.aragon.es/egafintra/login', icon: 'external' },
+        ],
+      },
+      {
+        name: 'Method',
+        description: 'API de geolocalización para seguimiento logístico avanzado. REST API con consultas geo sobre ElasticSearch e infraestructura en AWS.',
+        tags: ['TypeScript', 'Angular', 'Express', 'MySQL', 'ElasticSearch', 'AWS'],
+        image: '/method.webp',
+        links: [
+          { label: 'Visitar', url: 'https://method-logistics.com/', icon: 'external' },
+        ],
+      },
+      {
+        name: 'NH Hotels',
+        description: 'Desarrollo de API REST en microservicios para NH Hotels Group. Servicios Java Spring Boot con C# .NET, pipelines Jenkins e infraestructura AWS.',
+        tags: ['Java', 'Spring Boot', 'C#', '.NET', 'Jenkins', 'AWS'],
+        image: '/nh.webp',
+        links: [
+          { label: 'Visitar', url: 'https://www.nh-hotels.com/en', icon: 'external' },
         ],
       },
     ],
