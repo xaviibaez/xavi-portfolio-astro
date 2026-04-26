@@ -1,6 +1,6 @@
 ---
 import BlogPost from '@/components/blog/BlogPost.astro';
-import { getBlogStaticPaths } from '@/lib/blog';
+import { getBlogStaticPaths } from '@/lib/blogUtils';
 
 export async function getStaticPaths() { return getBlogStaticPaths('es'); }
 
