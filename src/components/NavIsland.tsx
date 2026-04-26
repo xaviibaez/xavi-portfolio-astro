@@ -1,6 +1,6 @@
 import ThemeSelector from './ThemeSelector';
 import LanguageSelector from './LanguageSelector';
-import type { Lang } from '@/i18n/utils';
+import type { Lang } from '@/i18n/languageUtils';
 
 interface NavTranslations {
   language: { toggle: string };
