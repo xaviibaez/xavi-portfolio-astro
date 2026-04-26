@@ -1,0 +1,12 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BentoGrid from '@/components/BentoGrid.astro';
+import { useTranslations } from '@/i18n/utils';
+
+const lang = 'ca';
+const translation = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title="Xavi Ibáñez — Senior Backend Engineer">
+  <BentoGrid translation={translation} lang={lang} />
+</BaseLayout>

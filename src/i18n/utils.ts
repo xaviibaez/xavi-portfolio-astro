@@ -1,9 +1,11 @@
 import { en } from './en';
 import { es } from './es';
+import { ca } from './ca';
 
 export const languages = {
   en,
   es,
+  ca,
 } as const;
 
 export type Lang = keyof typeof languages;
@@ -18,24 +20,33 @@ export function getLangFromUrl(url: URL): Lang {
   return 'en';
 }
 
-export function getOtherLang(lang: Lang): Lang {
-  return lang === 'en' ? 'es' : 'en';
-}
-
-/** Returns the URL prefix for a given lang: '/es' or '' */
+/** Returns the URL prefix for a given lang: '/es', '/ca', or '' */
 export function getLangBase(lang: Lang): string {
-  return lang === 'es' ? '/es' : '';
+  if (lang === 'en') return '';
+  return `/${lang}`;
 }
 
-/** Returns the equivalent path in the other language */
-export function getAlternatePath(currentPath: string, currentLang: Lang): string {
-  if (currentLang === 'en') {
-    return currentPath === '/' ? '/es' : `/es${currentPath}`;
-  }
-  return currentPath.replace(/^\/es/, '') || '/';
+/** Returns the equivalent path in the target language */
+export function getPathForLang(currentPath: string, currentLang: Lang, targetLang: Lang): string {
+  const basePath =
+    currentLang === 'en'
+      ? currentPath
+      : currentPath.replace(new RegExp(`^/${currentLang}`), '') || '/';
+
+  if (targetLang === 'en') return basePath || '/';
+  return basePath === '/' ? `/${targetLang}` : `/${targetLang}${basePath}`;
+}
+
+const langCycle: Record<Lang, Lang> = { en: 'es', es: 'ca', ca: 'en' };
+
+/** Returns the next language in the cycle: en → es → ca → en */
+export function getNextLang(lang: Lang): Lang {
+  return langCycle[lang];
 }
 
 /** Returns the OG locale string for a given lang */
 export function getOgLocale(lang: Lang): string {
-  return lang === 'es' ? 'es_ES' : 'en_US';
+  if (lang === 'es') return 'es_ES';
+  if (lang === 'ca') return 'ca_ES';
+  return 'en_US';
 }

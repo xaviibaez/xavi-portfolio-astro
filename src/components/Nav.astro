@@ -1,7 +1,7 @@
 ---
 import NavReact from './NavIsland';
 import type { Lang } from '@/i18n/utils';
-import { useTranslations, getLangBase } from '@/i18n/utils';
+import { useTranslations, getLangBase, getNextLang, getPathForLang } from '@/i18n/utils';
 
 interface Props {
   lang: Lang;
@@ -10,23 +10,20 @@ interface Props {
 const { lang } = Astro.props;
 const translation = useTranslations(lang);
 const base = getLangBase(lang);
-
 const currentPath = Astro.url.pathname;
-let targetPath = '/';
-if (lang === 'en') {
-  targetPath = currentPath === '/' ? '/es' : `/es${currentPath}`;
-} else {
-  targetPath = currentPath.replace(/^\/es/, '') || '/';
-}
+
+const nextLang = getNextLang(lang);
+const targetPath = getPathForLang(currentPath, lang, nextLang);
 ---
 
 <NavReact
   client:load
   lang={lang}
   base={base}
+  nextLangName={translation.language[nextLang]}
+  targetPath={targetPath}
   translation={{
-    language: { toggle: translation.language.toggle, en: translation.language.en, es: translation.language.es },
+    language: { toggle: translation.language.toggle },
     theme: { toggle: translation.theme.toggle },
   }}
-  targetPath={targetPath}
 />

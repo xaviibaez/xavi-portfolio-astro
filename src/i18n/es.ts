@@ -153,6 +153,7 @@ company: 'EY',
     toggle: 'Idioma',
     en: 'English',
     es: 'Español',
+    ca: 'Català',
   },
   footer: {
     built: 'Hecho con Astro · Código abierto en',

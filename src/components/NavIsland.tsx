@@ -1,19 +1,21 @@
 import ThemeSelector from './ThemeSelector';
 import LanguageSelector from './LanguageSelector';
+import type { Lang } from '@/i18n/utils';
 
 interface NavTranslations {
-  language: { toggle: string; en: string; es: string };
+  language: { toggle: string };
   theme: { toggle: string };
 }
 
 interface Props {
-  lang: 'en' | 'es';
+  lang: Lang;
   base: string;
-  translation: NavTranslations;
+  nextLangName: string;
   targetPath: string;
+  translation: NavTranslations;
 }
 
-export default function Nav({ lang, base, translation, targetPath }: Props) {
+export default function Nav({ lang, base, nextLangName, targetPath, translation }: Props) {
   return (
     <nav
       className="sticky top-0 z-50 border-b backdrop-blur-md"
@@ -27,9 +29,8 @@ export default function Nav({ lang, base, translation, targetPath }: Props) {
 
         <div className="flex items-center gap-2 ml-auto">
           <LanguageSelector
-            currentLang={lang}
             label={translation.language.toggle}
-            langNames={{ en: translation.language.en, es: translation.language.es }}
+            nextLangName={nextLangName}
             targetPath={targetPath}
           />
           <ThemeSelector label={translation.theme.toggle} />

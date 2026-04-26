@@ -1,11 +1,10 @@
 interface Props {
-  currentLang: 'en' | 'es';
   label: string;
-  langNames: { en: string; es: string };
+  nextLangName: string;
   targetPath: string;
 }
 
-export default function LanguageSelector({ currentLang, label, langNames, targetPath }: Props) {
+export default function LanguageSelector({ label, nextLangName, targetPath }: Props) {
   return (
     <a
       href={targetPath}
@@ -13,7 +12,7 @@ export default function LanguageSelector({ currentLang, label, langNames, target
       style={{ color: 'var(--fg-muted)', borderColor: 'var(--border)', background: 'transparent' }}
       aria-label={label}
     >
-      {currentLang === 'en' ? langNames.es : langNames.en}
+      {nextLangName}
     </a>
   );
 }

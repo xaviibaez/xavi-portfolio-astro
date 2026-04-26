@@ -151,6 +151,7 @@ company: 'EY',
     toggle: 'Language',
     en: 'English',
     es: 'Español',
+    ca: 'Català',
   },
   footer: {
     built: 'Built with Astro · Open source on',
