@@ -1,0 +1,49 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { useTranslations, getLangBase } from '@/i18n/utils';
+import type { Lang } from '@/i18n/utils';
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { format } from 'date-fns';
+import { enUS, es as esLocale, ca as caLocale } from 'date-fns/locale';
+
+interface Props {
+  lang: Lang;
+  post: CollectionEntry<'blog'>;
+}
+
+const { lang, post } = Astro.props;
+const { Content } = await render(post);
+const translation = useTranslations(lang);
+
+const dateLocales = { en: enUS, es: esLocale, ca: caLocale };
+const dateFormats = { en: 'MMMM d, yyyy', es: "d 'de' MMMM 'de' yyyy", ca: "d 'de' MMMM 'de' yyyy" };
+const formattedDate = format(post.data.pubDate, dateFormats[lang], { locale: dateLocales[lang] });
+---
+
+<BaseLayout lang={lang} title={`${post.data.title} — Xavi Ibáñez`} description={post.data.description}>
+  <article class="max-w-[720px] mx-auto px-6 py-8 pb-16">
+    <div class="mb-8">
+      <a href={`${getLangBase(lang)}/blog`} class="btn btn-ghost btn-sm no-underline text-[0.85rem]">
+        ← {translation.blog.backToBlog}
+      </a>
+    </div>
+
+    <header class="mb-10 border-b border-border pb-8">
+      <div class="flex items-center gap-3 flex-wrap mb-4 text-[0.85rem]">
+        <time class="text-muted" datetime={post.data.pubDate.toISOString()}>
+          {translation.blog.publishedOn} {formattedDate}
+        </time>
+        <div class="flex gap-[0.35rem] flex-wrap">
+          {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+        </div>
+      </div>
+      <h1 class="text-[2rem] font-extrabold tracking-[-0.03em] leading-[1.2] mb-3 text-fg">{post.data.title}</h1>
+      <p class="text-muted text-[1.05rem] leading-relaxed">{post.data.description}</p>
+    </header>
+
+    <div class="prose max-w-none">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
