@@ -61,6 +61,8 @@ company: 'EY',
   projects: {
     title: 'Projectes',
     viewAll: 'Veure tots els projectes',
+    subtitle: 'Projectes de codi obert i treball personal.',
+    portfolioDescription: 'Aquest portfolio. Construït amb Astro, Tailwind CSS, bento grid, i18n (CA/ES/EN) i selector de temes de color.',
     items: [
       {
         name: 'PetHome API',

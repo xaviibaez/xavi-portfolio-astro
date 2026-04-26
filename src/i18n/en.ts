@@ -59,6 +59,8 @@ company: 'EY',
   projects: {
     title: 'Projects',
     viewAll: 'View all projects',
+    subtitle: 'Open source work and side projects.',
+    portfolioDescription: 'This portfolio! Built with Astro, Tailwind CSS, bento grid layout, i18n (EN/ES/CA), and multi-color theme support.',
     items: [
       {
         name: 'PetHome API',

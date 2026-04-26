@@ -61,6 +61,8 @@ company: 'EY',
   projects: {
     title: 'Proyectos',
     viewAll: 'Ver todos los proyectos',
+    subtitle: 'Proyectos open source y trabajo personal.',
+    portfolioDescription: 'Este portfolio. Construido con Astro, Tailwind CSS, bento grid, i18n (CA/ES/EN) y selector de temas de color.',
     items: [
       {
         name: 'PetHome API',
