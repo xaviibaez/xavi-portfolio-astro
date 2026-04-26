@@ -132,6 +132,7 @@ company: 'EY',
     backToBlog: 'Back to blog',
     allPosts: 'All posts',
     noPosts: 'No posts yet. Stay tuned!',
+    subtitle: 'Thoughts on distributed systems, clean architecture and software engineering.',
   },
   contact: {
     title: 'Let\'s connect',

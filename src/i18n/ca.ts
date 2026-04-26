@@ -134,6 +134,7 @@ company: 'EY',
     backToBlog: 'Tornar al blog',
     allPosts: 'Totes les entrades',
     noPosts: 'Encara no hi ha entrades. Aviat!',
+    subtitle: 'Reflexions sobre sistemes distribuïts, arquitectura neta i enginyeria de programari.',
   },
   contact: {
     title: 'Parlem',

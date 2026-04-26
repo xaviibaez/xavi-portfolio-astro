@@ -134,6 +134,7 @@ company: 'EY',
     backToBlog: 'Volver al blog',
     allPosts: 'Todas las entradas',
     noPosts: 'Aún no hay entradas. ¡Próximamente!',
+    subtitle: 'Reflexiones sobre sistemas distribuidos, arquitectura limpia e ingeniería de software.',
   },
   contact: {
     title: 'Hablemos',
